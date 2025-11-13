@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main (){
+    int n;
+    float s=0;
+    cout <<"Ingresa la cantidad de numeros : "<<endl;
+    cin >> n;
+    vector<float> numeros(n);
+    cout <<"ingrese los numeros\n";
+    for (int i=0; i<n; i++) {
+        cout <<"El elemento["<< i + 1 <<"]:";
+        cin >> numeros[i];
+    }
+   for (int i=0; i<n; i++){
+       s += numeros[i];
+   }
+   float promedio = s / n;
+   cout <<"el promedio es de:"<<promedio<<endl;
+   return 0;
+}
