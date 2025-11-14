@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingrese la cantidad de elementos del vector: ";
+    cin >> n;
+
+    if (n <= 0) {
+        cout << "El vector debe tener al menos un elemento." << endl;
+        return 0;
+    }
+
+    vector<int> v(n);
+    cout << "Ingrese los elementos del vector:\n";
+    for (int i = 0; i < n; i++) {
+        cout << "Elemento[" << i + 1 << "]: ";
+        cin >> v[i];
+    }
+
+    int positivos = 0, negativos = 0, ceros = 0;
