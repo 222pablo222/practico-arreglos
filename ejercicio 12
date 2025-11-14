@@ -19,20 +19,27 @@ int main() {
         cin >> v[i];
     }
 
-    int positivos = 0, negativos = 0, ceros = 0;
+    vector<int> sinDuplicados;
 
     for (int i = 0; i < n; i++) {
-        if (v[i] > 0)
-            positivos++;
-        else if (v[i] < 0)
-            negativos++;
-        else
-            ceros++;
+        bool existe = false;
+        for (int j = 0; j < sinDuplicados.size(); j++) {
+            if (v[i] == sinDuplicados[j]) {
+                existe = true;
+                break;
+            }
+        }
+        if (!existe) {
+            sinDuplicados.push_back(v[i]);
+        }
     }
 
-    cout << "\nCantidad de positivos: " << positivos << endl;
-    cout << "Cantidad de negativos: " << negativos << endl;
-    cout << "Cantidad de ceros: " << ceros << endl;
+    cout << "\nVector sin duplicados:\n";
+    for (int i = 0; i < sinDuplicados.size(); i++) {
+        cout << sinDuplicados[i] << " ";
+    }
+    cout << endl;
 
     return 0;
 }
+
