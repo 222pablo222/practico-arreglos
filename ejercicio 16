@@ -1,0 +1,115 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    vector<string> alumnos;
+    vector<float> notas;
+    int opcion;
+
+    do {
+        cout << "\n===== MENU ALUMNOS =====\n";
+        cout << "1) Ingresar alumno y nota\n";
+        cout << "2) Listar alumnos\n";
+        cout << "3) Ordenar alfabeticamente\n";
+        cout << "4) Mostrar la mejor nota\n";
+        cout << "5) Mostrar promedio de notas\n";
+        cout << "0) Salir\n";
+        cout << "Elija una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+
+        case 1: {
+            string nombre;
+            float nota;
+
+            cout << "Ingrese el nombre del alumno: ";
+            cin >> nombre;
+            cout << "Ingrese la nota: ";
+            cin >> nota;
+
+            alumnos.push_back(nombre);
+            notas.push_back(nota);
+
+            cout << "Alumno agregado!\n";
+            break;
+        }
+
+        case 2: {
+            if (alumnos.empty()) {
+                cout << "No hay alumnos registrados.\n";
+            } else {
+                cout << "\n--- LISTA DE ALUMNOS ---\n";
+                for (size_t i = 0; i < alumnos.size(); i++) {
+                    cout << i + 1 << ") " << alumnos[i]
+                         << " - Nota: " << notas[i] << endl;
+                }
+            }
+            break;
+        }
+
+        case 3: {
+            int n = alumnos.size();
+            if (n == 0) {
+                cout << "No hay alumnos para ordenar.\n";
+                break;
+            }
+
+            for (int i = 0; i < n - 1; i++) {
+                for (int j = 0; j < n - 1 - i; j++) {
+                    if (alumnos[j] > alumnos[j + 1]) {
+                        swap(alumnos[j], alumnos[j + 1]);
+                        swap(notas[j], notas[j + 1]);
+                    }
+                }
+            }
+
+            cout << "Alumnos ordenados alfabeticamente!\n";
+            break;
+        }
+
+        case 4: {
+            if (notas.empty()) {
+                cout << "No hay alumnos registrados.\n";
+                break;
+            }
+
+            int pos = 0;
+            for (size_t i = 1; i < notas.size(); i++) {
+                if (notas[i] > notas[pos])
+                    pos = i;
+            }
+
+            cout << "La mejor nota es de: " << alumnos[pos]
+                 << " con nota " << notas[pos] << endl;
+            break;
+        }
+
+        case 5: {
+            if (notas.empty()) {
+                cout << "No hay alumnos registrados.\n";
+                break;
+            }
+
+            float suma = 0;
+            for (float x : notas) suma += x;
+
+            float promedio = suma / notas.size();
+            cout << "El promedio de notas es: " << promedio << endl;
+            break;
+        }
+
+        case 0:
+            cout << "Saliendo del programa...\n";
+            break;
+
+        default:
+            cout << "Opcion no valida.\n";
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
