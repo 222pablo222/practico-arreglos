@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Ingresa la cantidad de numeros: ";
+    cin >> n;
+
+    vector<int> numeros(n);
+    cout << "Ingrese los numeros:\n";
+    for (int i = 0; i < n; i++) {
+        cout << "Elemento[" << i + 1 << "]: ";
+        cin >> numeros[i];
+    }
+
+    bool esCapicua = true;
+
+    for (int i = 0; i < n / 2; i++) {
+        if (numeros[i] != numeros[n - 1 - i]) {
+            esCapicua = false;
+            break;
+        }
+    }
+
+    if (esCapicua)
+        cout << "El vector es capicua" << endl;
+    else
+        cout << "El vector NO es capicua" << endl;
+
+    return 0;
+}
